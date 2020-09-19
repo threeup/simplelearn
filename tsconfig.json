@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "commonjs",
+    "types": [
+        "babylonjs",
+        "babylonjs-gui",
+        "babylonjs-materials"
+    ],
+    "outDir": "./app"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
