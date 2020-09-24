@@ -11,7 +11,7 @@ function createWindow() {
         x: 0,
         y: 0,
         darkTheme: true,
-        //fullscreen: true,
+        fullscreen: true,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
