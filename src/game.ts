@@ -1,34 +1,21 @@
-import { Engine, Scene, Gamepad, GamepadManager, GenericPad } from "babylonjs";
+import * as PIXI from "pixi.js-legacy";
 import { World } from "./world"
 
 export class Game {
     public canvas: any = document.getElementById("main");
-    public engine: Engine;
-    public scene: Scene;
-    public gpMan: GamepadManager;
     public world: World;
+    public app: PIXI.Application;
 
     public init(): void {
-        this.engine = new Engine(this.canvas, true);
-        this.gpMan = new GamepadManager();
-        this.scene = new Scene(this.engine);
-        this.world = new World();
-        this.world.createWorld(this.scene, this.canvas);
-        this.gpMan = new GamepadManager();
-        this.gpMan.onGamepadConnectedObservable.add(this.createGpad);
-
-        this.engine.runRenderLoop(() => {
-            this.world.loop();
-            this.scene.render();
-        });
         console.log("inited");
-
-    }
-
-
-    public createGpad(gamepad: Gamepad): void {
-        if (gamepad instanceof GenericPad) {
-
-        }
+        this.app = new PIXI.Application({
+            width: 800,
+            height: 600,
+            backgroundColor: 0x1099bb,
+            view: this.canvas,
+            resolution: window.devicePixelRatio || 1
+        });
+        this.world = new World();
+        this.world.init(this.app);
     }
 }

@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "types": [
-        "babylonjs",
-        "babylonjs-gui",
-        "babylonjs-materials"
-    ],
+		"declaration": false,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"allowJs": true,
     "outDir": "./app"
   },
   "include": [
