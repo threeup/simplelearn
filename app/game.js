@@ -3,12 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game = void 0;
 const PIXI = require("pixi.js-legacy");
 const world_1 = require("./world");
+const gamestate_1 = require("./gamestate");
 class Game {
     constructor() {
         this.canvas = document.getElementById("main");
-    }
-    init() {
-        console.log("inited");
+        this.state = new gamestate_1.GameState();
         this.app = new PIXI.Application({
             width: 800,
             height: 600,
@@ -16,8 +15,26 @@ class Game {
             view: this.canvas,
             resolution: window.devicePixelRatio || 1
         });
-        this.world = new world_1.World();
-        this.world.init(this.app);
+        this.world = new world_1.World(this.state, null, this.app);
+        var game = this;
+        document.addEventListener('keydown', function (e) {
+            if (game.state) {
+                game.state.isKeyDown.set(e.key, true);
+            }
+        });
+        document.addEventListener('keyup', function (e) {
+            if (game.state) {
+                game.state.isKeyDown.set(e.key, false);
+            }
+        });
+        this.app.ticker.add(function (delta) {
+            if (game.world) {
+                game.world.update(delta);
+            }
+            if (game.state) {
+                game.state.update(delta);
+            }
+        });
     }
 }
 exports.Game = Game;

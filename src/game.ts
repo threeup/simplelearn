@@ -1,13 +1,17 @@
 import * as PIXI from "pixi.js-legacy";
 import { World } from "./world"
+import { GameState } from "./gamestate"
 
 export class Game {
-    public canvas: any = document.getElementById("main");
-    public world: World;
+    public canvas: any;
     public app: PIXI.Application;
+    
+    public state: GameState;
+    public world: World;
 
-    public init(): void {
-        console.log("inited");
+    constructor() {
+        this.canvas = document.getElementById("main");
+        this.state = new GameState();
         this.app = new PIXI.Application({
             width: 800,
             height: 600,
@@ -15,7 +19,31 @@ export class Game {
             view: this.canvas,
             resolution: window.devicePixelRatio || 1
         });
-        this.world = new World();
-        this.world.init(this.app);
+
+        this.world = new World(this.state, null, this.app);
+        
+        var game:Game = this;
+        document.addEventListener('keydown', function(e:KeyboardEvent){
+            
+            if(game.state) {
+                game.state.isKeyDown.set(e.key, true);
+            }
+        })
+        document.addEventListener('keyup', function(e:KeyboardEvent){
+            if(game.state) {
+                game.state.isKeyDown.set(e.key, false);
+            }
+        });
+        
+        this.app.ticker.add(function(delta:number){
+            if(game.world) {
+                game.world.update(delta);
+            }
+            
+            if(game.state) {
+                game.state.update(delta);
+            }
+        });
+            
     }
 }
