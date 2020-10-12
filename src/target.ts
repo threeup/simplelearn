@@ -14,13 +14,11 @@ export class Target extends Entity {
         super(state, root, app);
 
         var rootContainer: PIXI.Container = root;
-        this.loader.add('targetWordData', 'assets/targetwords.json');
+        this.loader.add('targetWordData', 'assets/objectdata.json');
         this.loader.load((loader: PIXI.Loader, resources: any) => {
             this.targetData = resources.targetWordData.data;
             this.elements = this.targetData.elements;
 
-            console.log("targetData",this.targetData);
-            console.log("elements",this.elements);
             var data = this.elements[1];
             this.sprite = PIXI.Sprite.from(data.img);
             this.sprite.zIndex = -1;
@@ -39,7 +37,7 @@ export class Target extends Entity {
     }
 
     public refresh(): void {
-        var idx = this.randRange(0, 10);
+        var idx = this.randRange(0, 40);
         var data = this.elements[idx];
         
         this.sprite.texture = PIXI.Texture.from(data.img);
