@@ -4,25 +4,26 @@ exports.Target = void 0;
 const PIXI = require("pixi.js-legacy");
 const entity_1 = require("./entity");
 class Target extends entity_1.Entity {
-    constructor(state, root, app) {
-        super(state, root, app);
+    constructor(state, common, root, app) {
+        super(state, common, root, app);
         this.state = state;
+        this.common = common;
         this.root = root;
         this.app = app;
         this.loader = new PIXI.Loader();
-        var rootContainer = root;
-        this.loader.add('targetWordData', 'assets/objectdata.json');
-        this.loader.load((loader, resources) => {
-            this.targetData = resources.targetWordData.data;
-            this.elements = this.targetData.elements;
-            var data = this.elements[1];
-            this.sprite = PIXI.Sprite.from(data.img);
-            this.sprite.zIndex = -1;
-            this.sprite.scale = new PIXI.Point(0.2, 0.2);
-            this.sprite.x = 500 * Math.random();
-            this.sprite.y = 300;
-            rootContainer.addChild(this.sprite);
-        });
+    }
+    commonChanged(num) {
+        var rootContainer = this.root;
+        this.elements = this.common.targetData.elements;
+        var data = this.elements[1];
+        let headerSprite = PIXI.Sprite.from(data.img);
+        headerSprite.zIndex = -1;
+        headerSprite.scale = new PIXI.Point(0.2, 0.2);
+        headerSprite.x = 50;
+        headerSprite.y = 50;
+        this.sprites.push(headerSprite);
+        console.log(data.text);
+        this.sprites.forEach(s => rootContainer.addChild(s));
     }
     randRange(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -30,10 +31,10 @@ class Target extends entity_1.Entity {
     refresh() {
         var idx = this.randRange(0, 40);
         var data = this.elements[idx];
-        this.sprite.texture = PIXI.Texture.from(data.img);
+        this.sprites[0].texture = PIXI.Texture.from(data.img);
     }
     update(delta) {
-        if (this.state.isKeyPressed('a')) {
+        if (this.state.isKeyPressed('Enter')) {
             this.refresh();
         }
     }

@@ -1,14 +1,17 @@
 import * as PIXI from "pixi.js-legacy";
 import { GameState } from "./gamestate"
+import { Common, CommonState } from "./common"
 import { Entity } from "./entity"
 
 export class Actor extends Entity {
     public sprite: PIXI.Sprite = PIXI.Sprite.from("assets/bunny.png");
 
     constructor(protected state: GameState, 
+        protected common: Common,
         protected root: any,
-        protected app: any) {
-        super(state, root, app);
+        protected app: any
+    ) {
+        super(state, common, root, app);
         
         var rootContainer: PIXI.Container = root;
         this.sprite.zIndex = -1;

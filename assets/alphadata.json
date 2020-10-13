@@ -1,0 +1,148 @@
+{
+    "elements": [
+      {
+        "text": "a",
+        "img": "./assets/alphanum/a.svg"
+      },
+      {
+        "text": "b",
+        "img": "./assets/alphanum/b.svg"
+      },
+      {
+        "text": "c",
+        "img": "./assets/alphanum/c.svg"
+      },
+      {
+        "text": "d",
+        "img": "./assets/alphanum/d.svg"
+      },
+      {
+        "text": "e",
+        "img": "./assets/alphanum/e.svg"
+      },
+      {
+        "text": "f",
+        "img": "./assets/alphanum/f.svg"
+      },
+      {
+        "text": "g",
+        "img": "./assets/alphanum/g.svg"
+      },
+      {
+        "text": "h",
+        "img": "./assets/alphanum/h.svg"
+      },
+      {
+        "text": "i",
+        "img": "./assets/alphanum/i.svg"
+      },
+      {
+        "text": "j",
+        "img": "./assets/alphanum/j.svg"
+      },
+      {
+        "text": "k",
+        "img": "./assets/alphanum/k.svg"
+      },
+      {
+        "text": "l",
+        "img": "./assets/alphanum/l.svg"
+      },
+      {
+        "text": "m",
+        "img": "./assets/alphanum/m.svg"
+      },
+      {
+        "text": "n",
+        "img": "./assets/alphanum/n.svg"
+      },
+      {
+        "text": "o",
+        "img": "./assets/alphanum/o.svg"
+      },
+      {
+        "text": "p",
+        "img": "./assets/alphanum/p.svg"
+      },
+      {
+        "text": "q",
+        "img": "./assets/alphanum/q.svg"
+      },
+      {
+        "text": "r",
+        "img": "./assets/alphanum/r.svg"
+      },
+      {
+        "text": "s",
+        "img": "./assets/alphanum/s.svg"
+      },
+      {
+        "text": "t",
+        "img": "./assets/alphanum/t.svg"
+      },
+      {
+        "text": "u",
+        "img": "./assets/alphanum/u.svg"
+      },
+      {
+        "text": "v",
+        "img": "./assets/alphanum/v.svg"
+      },
+      {
+        "text": "w",
+        "img": "./assets/alphanum/w.svg"
+      },
+      {
+        "text": "x",
+        "img": "./assets/alphanum/x.svg"
+      },
+      {
+        "text": "y",
+        "img": "./assets/alphanum/y.svg"
+      },
+      {
+        "text": "z",
+        "img": "./assets/alphanum/z.svg"
+      },
+      {
+        "text": "0",
+        "img": "./assets/alphanum/zero.svg"
+      },
+      {
+        "text": "1",
+        "img": "./assets/alphanum/one.svg"
+      },
+      {
+        "text": "2",
+        "img": "./assets/alphanum/two.svg"
+      },
+      {
+        "text": "3",
+        "img": "./assets/alphanum/three.svg"
+      },
+      {
+        "text": "4",
+        "img": "./assets/alphanum/four.svg"
+      },
+      {
+        "text": "5",
+        "img": "./assets/alphanum/five.svg"
+      },
+      {
+        "text": "6",
+        "img": "./assets/alphanum/six.svg"
+      },
+      {
+        "text": "7",
+        "img": "./assets/alphanum/seven.svg"
+      },
+      {
+        "text": "8",
+        "img": "./assets/alphanum/eight.svg"
+      },
+      {
+        "text": "9",
+        "img": "./assets/alphanum/nine.svg"
+      }
+    ]
+  }

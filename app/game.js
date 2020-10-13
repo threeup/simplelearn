@@ -4,10 +4,12 @@ exports.Game = void 0;
 const PIXI = require("pixi.js-legacy");
 const world_1 = require("./world");
 const gamestate_1 = require("./gamestate");
+const common_1 = require("./common");
 class Game {
     constructor() {
         this.canvas = document.getElementById("main");
         this.state = new gamestate_1.GameState();
+        this.common = new common_1.Common();
         this.app = new PIXI.Application({
             width: 800,
             height: 600,
@@ -15,7 +17,7 @@ class Game {
             view: this.canvas,
             resolution: window.devicePixelRatio || 1
         });
-        this.world = new world_1.World(this.state, null, this.app);
+        this.world = new world_1.World(this.state, this.common, null, this.app);
         var game = this;
         document.addEventListener('keydown', function (e) {
             if (game.state) {

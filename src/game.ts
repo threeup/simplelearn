@@ -1,17 +1,20 @@
 import * as PIXI from "pixi.js-legacy";
 import { World } from "./world"
 import { GameState } from "./gamestate"
+import { Common } from "./common"
 
 export class Game {
     public canvas: any;
     public app: PIXI.Application;
     
     public state: GameState;
+    public common: Common;
     public world: World;
 
     constructor() {
         this.canvas = document.getElementById("main");
         this.state = new GameState();
+        this.common = new Common();
         this.app = new PIXI.Application({
             width: 800,
             height: 600,
@@ -20,7 +23,7 @@ export class Game {
             resolution: window.devicePixelRatio || 1
         });
 
-        this.world = new World(this.state, null, this.app);
+        this.world = new World(this.state, this.common, null, this.app);
         
         var game:Game = this;
         document.addEventListener('keydown', function(e:KeyboardEvent){
