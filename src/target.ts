@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js-legacy";
 import { GameState } from "./gamestate"
 import { Common, CommonState } from "./common"
 import { Entity } from "./entity"
+import { Lib } from "./lib"
 
 export class Target extends Entity {
     public loader: PIXI.Loader = new PIXI.Loader();
@@ -18,22 +19,9 @@ export class Target extends Entity {
     }
 
     public commonChanged(num: CommonState): void {
-        var rootContainer: PIXI.Container = this.root;
         this.elements = this.common.targetData.elements;
 
-        var data = this.elements[1];
-        let headerSprite = PIXI.Sprite.from(data.img);
-        headerSprite.zIndex = -1;
-        headerSprite.scale = new PIXI.Point(0.2, 0.2);
-        headerSprite.x = 50;
-        headerSprite.y = 50;
-        this.sprites.push(headerSprite);
-        console.log(data.text);
-        /*for(var i=0; i<20; ++i) {
-            
-        }*/
-        
-        this.sprites.forEach(s => rootContainer.addChild(s))
+        this.refresh();
     }
 
     public randRange(min: number, max: number): number {
@@ -46,7 +34,14 @@ export class Target extends Entity {
         var idx = this.randRange(0, 40);
         var data = this.elements[idx];
         
-        this.sprites[0].texture = PIXI.Texture.from(data.img);
+        var rootContainer: PIXI.Container = this.root;
+        this.sprites.forEach(s => rootContainer.removeChild(s))
+        this.sprites.splice(0, this.sprites.length);
+
+        this.sprites.push(Lib.makeHeader(data.img,50,50));
+        var spriteList = Lib.makeWord(data.text, 160, 70, 0x99ffff, this.common);
+        this.sprites = this.sprites.concat(spriteList);
+        this.sprites.forEach(s => rootContainer.addChild(s));
     }
 
     public update(delta: number): void {

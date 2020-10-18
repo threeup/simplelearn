@@ -2,8 +2,12 @@ import * as PIXI from "pixi.js-legacy";
 import { GameState } from "./gamestate"
 import { Common, CommonState } from "./common"
 import { Entity } from "./entity"
+import { Lib } from "./lib"
 
 export class Hero extends Entity {
+
+    private progress: number;
+    private colorMatrix: PIXI.filters.ColorMatrixFilter;
 
     constructor(protected state: GameState, 
         protected common: Common,
@@ -11,6 +15,7 @@ export class Hero extends Entity {
         protected app: any
     ) {
         super(state, common, root, app);
+        this.progress = 0;
     }
 
     
@@ -20,15 +25,18 @@ export class Hero extends Entity {
 
 
     public add(char: string): void {
-        var charValue = this.common.alphaMap.get(char);
-        var sprite = PIXI.Sprite.from(charValue);
-        sprite.zIndex = -1;
-        sprite.scale = new PIXI.Point(0.06, 0.06);
-        sprite.x = 750 * Math.random();
-        sprite.y = 100+400 * Math.random();
-        
         var rootContainer: PIXI.Container = this.root;
-        rootContainer.addChild(sprite);
+        
+        this.progress += 1;
+        if (this.progress > 10) {
+            this.progress = 1;
+            this.sprites.forEach(s => rootContainer.removeChild(s))
+            this.sprites.splice(0, this.sprites.length);
+        }
+         var spriteList = Lib.makeWord(char, 90+this.progress*Lib.wordStep, 700, 0xffccaa, this.common)
+        
+        this.sprites = this.sprites.concat(spriteList);
+        this.sprites.forEach(s => rootContainer.addChild(s));
     }
 
     public update(delta: number): void {
@@ -45,5 +53,7 @@ export class Hero extends Entity {
                 this.add(key);
             }
         }
+        
+        this.sprites.forEach(s => s.y -= 1);
     }
 }

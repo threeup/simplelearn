@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Hero = void 0;
-const PIXI = require("pixi.js-legacy");
 const entity_1 = require("./entity");
+const lib_1 = require("./lib");
 class Hero extends entity_1.Entity {
     constructor(state, common, root, app) {
         super(state, common, root, app);
@@ -10,18 +10,21 @@ class Hero extends entity_1.Entity {
         this.common = common;
         this.root = root;
         this.app = app;
+        this.progress = 0;
     }
     commonChanged(num) {
     }
     add(char) {
-        var charValue = this.common.alphaMap.get(char);
-        var sprite = PIXI.Sprite.from(charValue);
-        sprite.zIndex = -1;
-        sprite.scale = new PIXI.Point(0.06, 0.06);
-        sprite.x = 750 * Math.random();
-        sprite.y = 100 + 400 * Math.random();
         var rootContainer = this.root;
-        rootContainer.addChild(sprite);
+        this.progress += 1;
+        if (this.progress > 10) {
+            this.progress = 1;
+            this.sprites.forEach(s => rootContainer.removeChild(s));
+            this.sprites.splice(0, this.sprites.length);
+        }
+        var spriteList = lib_1.Lib.makeWord(char, 90 + this.progress * 70, 700, 0xffccaa, this.common);
+        this.sprites = this.sprites.concat(spriteList);
+        this.sprites.forEach(s => rootContainer.addChild(s));
     }
     update(delta) {
         for (var i = 48; i <= 57; ++i) {
@@ -36,6 +39,7 @@ class Hero extends entity_1.Entity {
                 this.add(key);
             }
         }
+        this.sprites.forEach(s => s.y -= 1);
     }
 }
 exports.Hero = Hero;
