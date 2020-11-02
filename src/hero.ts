@@ -1,42 +1,45 @@
-import * as PIXI from "pixi.js-legacy";
-import { GameState } from "./gamestate"
-import { Common, CommonState } from "./common"
-import { Entity } from "./entity"
+import { CommonState } from "./common"
+import { Entity, EntityArgs } from "./entity"
 import { Lib } from "./lib"
+import { Transition } from "./transition";
+import { Transform } from "./basetypes"
 
 export class Hero extends Entity {
 
     private progress: number;
-    private colorMatrix: PIXI.filters.ColorMatrixFilter;
 
-    constructor(protected state: GameState, 
-        protected common: Common,
-        protected root: any,
-        protected app: any
-    ) {
-        super(state, common, root, app);
+    constructor(args: EntityArgs) {
+        super(args);
         this.progress = 0;
     }
-
     
     public commonChanged(num: CommonState): void {
-
     }
 
-
     public add(char: string): void {
-        var rootContainer: PIXI.Container = this.root;
-        
-        this.progress += 1;
-        if (this.progress > 10) {
-            this.progress = 1;
-            this.sprites.forEach(s => rootContainer.removeChild(s))
-            this.sprites.splice(0, this.sprites.length);
+        if(!this.root) {
+            return;
         }
-         var spriteList = Lib.makeWord(char, 90+this.progress*Lib.wordStep, 700, 0xffccaa, this.common)
+        if(this.common.targetRemaining.length > 0) {
+            const nextChar:string = this.common.targetRemaining.charAt(0);
+            if(char == nextChar) {
+                this.progress += 1;
+            }
+        }
         
-        this.sprites = this.sprites.concat(spriteList);
-        this.sprites.forEach(s => rootContainer.addChild(s));
+        if(this.childList.length > 25) {
+            this.childList[0].die();
+        }
+        var startX = 90+this.progress*Lib.wordStep;
+        
+        var letterTr:Transform = { posX:startX, posY:700, scaleX:0.2, scaleY:0.2 };
+        var letterEnt = Lib.makeLetter(this, char, letterTr, 0xffccaa, this.common);
+        var transition = new Transition(5);
+        transition.startPos = {posX:letterEnt.transform.posX, posY:letterEnt.transform.posY, scaleX:null, scaleY:null};
+        transition.endPos = {posX:startX-100, posY:0, scaleX:null, scaleY:null};
+        transition.setPos = this.setTransform;
+        this.updateList.push(transition);
+
     }
 
     public update(delta: number): void {
@@ -53,7 +56,6 @@ export class Hero extends Entity {
                 this.add(key);
             }
         }
-        
-        this.sprites.forEach(s => s.y -= 1);
+        super.update(delta);
     }
 }

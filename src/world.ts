@@ -1,34 +1,25 @@
 import * as PIXI from "pixi.js-legacy";
-import { GameState } from "./gamestate"
-import { Common,  } from "./common"
-import { Entity } from "./entity"
+import { Entity, EntityArgs, EntityConstructor } from "./entity"
 import { Target } from "./target"
 import { Hero } from "./hero"
+import { Transition } from "./transition"
 
+interface Updater {
+    update(delta: number): void;
+    die(): void;
+    isDead(): boolean;
+}
 export class World extends Entity {
-    public worldRoot: PIXI.Container;
-    public children: Array<Entity>;
 
-    constructor(protected state: GameState, 
-        protected common: Common,
-        protected root: any,
-        protected app: any) {
-        super(state, common, root, app);
-        
-        this.worldRoot = new PIXI.Container();
-        this.children = new Array();
-        
-        const target = new Target(state, common, this.worldRoot, app);
-        this.children.push(target);
-        const hero = new Hero(state, common, this.worldRoot, app);
-        this.children.push(hero);
-        
-        app.stage.addChild(this.worldRoot);
+    constructor(args: EntityArgs) {
+        super(args);
     }
 
-    public update(delta:number): void {
-        for(var item in this.children){
-            this.children[item].update(delta);
-        }
+    public setup() {
+        const nextRoot = new PIXI.Container();
+        this.root.addChild(nextRoot);
+        this.root = nextRoot;
+        this.makeChild(Target);
+        this.makeChild(Hero);
     }
 }

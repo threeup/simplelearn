@@ -4,18 +4,12 @@ exports.Actor = void 0;
 const PIXI = require("pixi.js-legacy");
 const entity_1 = require("./entity");
 class Actor extends entity_1.Entity {
-    constructor(state, common, root, app) {
-        super(state, common, root, app);
+    constructor(state, common, parent) {
+        super(state, common, parent);
         this.state = state;
         this.common = common;
-        this.root = root;
-        this.app = app;
+        this.parent = parent;
         this.sprite = PIXI.Sprite.from("assets/bunny.png");
-        var rootContainer = root;
-        this.sprite.zIndex = -1;
-        this.sprite.scale = new PIXI.Point(1.2, 1.2);
-        this.sprite.x = 500 * Math.random();
-        rootContainer.addChild(this.sprite);
     }
     loop() {
     }

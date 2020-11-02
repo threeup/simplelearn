@@ -17,7 +17,8 @@ class Game {
             view: this.canvas,
             resolution: window.devicePixelRatio || 1
         });
-        this.world = new world_1.World(this.state, this.common, null, this.app);
+        this.world = new world_1.World({ state: this.state, common: this.common, parent: null, root: this.app.stage });
+        this.world.setup();
         var game = this;
         document.addEventListener('keydown', function (e) {
             if (game.state) {

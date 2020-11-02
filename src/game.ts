@@ -6,7 +6,7 @@ import { Common } from "./common"
 export class Game {
     public canvas: any;
     public app: PIXI.Application;
-    
+
     public state: GameState;
     public common: Common;
     public world: World;
@@ -23,30 +23,30 @@ export class Game {
             resolution: window.devicePixelRatio || 1
         });
 
-        this.world = new World(this.state, this.common, null, this.app);
-        
-        var game:Game = this;
-        document.addEventListener('keydown', function(e:KeyboardEvent){
-            
-            if(game.state) {
+        this.world = new World({ state: this.state, common: this.common, parent: null, root:this.app.stage });
+        this.world.setup();
+
+        var game: Game = this;
+        document.addEventListener('keydown', function (e: KeyboardEvent) {
+            if (game.state) {
                 game.state.isKeyDown.set(e.key, true);
             }
         })
-        document.addEventListener('keyup', function(e:KeyboardEvent){
-            if(game.state) {
+        document.addEventListener('keyup', function (e: KeyboardEvent) {
+            if (game.state) {
                 game.state.isKeyDown.set(e.key, false);
             }
         });
-        
-        this.app.ticker.add(function(delta:number){
-            if(game.world) {
+
+        this.app.ticker.add(function (delta: number) {
+            if (game.world) {
                 game.world.update(delta);
             }
-            
-            if(game.state) {
+
+            if (game.state) {
                 game.state.update(delta);
             }
         });
-            
+
     }
 }

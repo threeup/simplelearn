@@ -17,6 +17,7 @@ class Common {
         this.loader = new PIXI.Loader();
         this.observerList = [];
         this.commonState = CommonState.Exist;
+        this.targetRemaining = "_";
         this.alphaMap = new Map;
         this.loader.add('alphaData', 'assets/alphadata.json');
         this.loader.add('targetWordData', 'assets/objectdata.json');

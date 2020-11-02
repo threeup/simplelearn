@@ -9,7 +9,8 @@ export enum CommonState {
     Exist,
     Loaded,
     Dead
-  }
+}
+
 
 export class Common {
 
@@ -17,12 +18,14 @@ export class Common {
     public targetData: any;
     public alphaMap: Map<string, string>;
     public commonState: CommonState;
+    public targetRemaining: string;
 
     protected loader: PIXI.Loader = new PIXI.Loader();
     protected observerList: IObserver[] = [];
 
     constructor() {
         this.commonState = CommonState.Exist;
+        this.targetRemaining = "_";
 
         this.alphaMap = new Map;
         this.loader.add('alphaData', 'assets/alphadata.json');
@@ -35,7 +38,7 @@ export class Common {
                 let el = this.alphaData.elements[elementName];
                 this.alphaMap.set(el.text, el.img);
             }
-            
+
             this.commonState = CommonState.Loaded;
             this.observerList.forEach(o => o.commonChanged(this.commonState));
         })

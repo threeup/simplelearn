@@ -3,28 +3,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Hero = void 0;
 const entity_1 = require("./entity");
 const lib_1 = require("./lib");
+const transition_1 = require("./transition");
 class Hero extends entity_1.Entity {
-    constructor(state, common, root, app) {
-        super(state, common, root, app);
-        this.state = state;
-        this.common = common;
-        this.root = root;
-        this.app = app;
+    constructor(args) {
+        super(args);
         this.progress = 0;
     }
     commonChanged(num) {
     }
     add(char) {
-        var rootContainer = this.root;
-        this.progress += 1;
-        if (this.progress > 10) {
-            this.progress = 1;
-            this.sprites.forEach(s => rootContainer.removeChild(s));
-            this.sprites.splice(0, this.sprites.length);
+        if (!this.root) {
+            return;
         }
-        var spriteList = lib_1.Lib.makeWord(char, 90 + this.progress * 70, 700, 0xffccaa, this.common);
-        this.sprites = this.sprites.concat(spriteList);
-        this.sprites.forEach(s => rootContainer.addChild(s));
+        if (this.common.targetRemaining.length > 0) {
+            const nextChar = this.common.targetRemaining.charAt(0);
+            if (char == nextChar) {
+                this.progress += 1;
+            }
+        }
+        if (this.childList.length > 25) {
+            this.childList[0].die();
+        }
+        var startX = 90 + this.progress * lib_1.Lib.wordStep;
+        var letterTr = { posX: startX, posY: 700, scaleX: 0.2, scaleY: 0.2 };
+        var letterEnt = lib_1.Lib.makeLetter(this, char, letterTr, 0xffccaa, this.common);
+        var transition = new transition_1.Transition(5);
+        transition.startPos = { posX: letterEnt.transform.posX, posY: letterEnt.transform.posY, scaleX: null, scaleY: null };
+        transition.endPos = { posX: startX - 100, posY: 0, scaleX: null, scaleY: null };
+        transition.setPos = this.setTransform;
+        this.updateList.push(transition);
     }
     update(delta) {
         for (var i = 48; i <= 57; ++i) {
@@ -39,7 +46,7 @@ class Hero extends entity_1.Entity {
                 this.add(key);
             }
         }
-        this.sprites.forEach(s => s.y -= 1);
+        super.update(delta);
     }
 }
 exports.Hero = Hero;
