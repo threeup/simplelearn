@@ -1,34 +1,53 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Entity = void 0;
-const PIXI = require("pixi.js-legacy");
+const node_1 = require("./node");
 class Entity {
     constructor(args) {
         this.state = args.state;
         this.common = args.common;
-        this.parent = args.parent;
-        this.root = args.root;
-        this.dead = false;
         this.common.observe(this);
-        this.childList = new Array();
+        this.partList = new Array();
         this.updateList = new Array();
-        this.sprites = new Array();
         this.transform = { posX: 0, posY: 0, scaleX: 0.2, scaleY: 0.2 };
     }
-    makeChild(ctor) {
-        var result = new ctor({ state: this.state, common: this.common, parent: this, root: this.root });
-        this.childList.push(result);
-        this.updateList.push(result);
-        return result;
+    isDead() {
+        return this.node === null;
     }
-    makeChildWithSprites(ctor, sprites) {
-        var result = this.makeChild(ctor);
-        result.sprites = sprites;
-        result.addSprites(this.root);
-        return result;
+    die() {
+        this.partList.forEach(p => p.beforeDetach(this));
+        this.partList.splice(0, this.partList.length);
+        this.detachNode();
     }
     killAllChild() {
-        this.childList.forEach(c => c.die());
+        this.updateList.forEach(c => c.die());
+    }
+    attachNode(node) {
+        node.entity = this;
+        this.node = node;
+    }
+    detachNode() {
+        this.node.entity = null;
+        this.node = null;
+    }
+    attachPart(part) {
+        this.partList.push(part);
+        part.afterAttach(this);
+        part.setTransform(this.transform);
+    }
+    detachPart(part) {
+        part.beforeDetach(this);
+        this.partList.forEach((element, index) => {
+            if (element == part) {
+                this.partList.splice(index, 1);
+            }
+        });
+    }
+    makeChild(ctor) {
+        var result = new ctor({ state: this.state, common: this.common });
+        result.attachNode(new node_1.Node({ parent: this.node }));
+        this.updateList.push(result);
+        return result;
     }
     setTransform(tr) {
         this.transform.posX = tr.posX;
@@ -39,30 +58,11 @@ class Entity {
         if (tr.scaleY) {
             this.transform.scaleY = tr.scaleY;
         }
-        this.sprites.forEach(s => {
-            s.x = this.transform.posX;
-            s.y = this.transform.posY;
-            s.scale = new PIXI.Point(this.transform.scaleX, this.transform.scaleY);
-        });
-    }
-    addSprites(container) {
-        this.sprites.forEach(s => container.addChild(s));
-    }
-    removeSprites(container) {
-        this.sprites.forEach(s => container.removeChild(s));
-        this.sprites.splice(0, this.sprites.length);
+        this.partList.forEach(p => { p.setTransform(this.transform); });
     }
     commonChanged(num) {
     }
-    die() {
-        this.removeSprites(this.root);
-        this.dead = true;
-    }
-    isDead() {
-        return this.dead === true;
-    }
     update(delta) {
-        this.childList = this.childList.filter(u => u.isDead() === false);
         this.updateList = this.updateList.filter(u => u.isDead() === false);
         for (var item in this.updateList) {
             this.updateList[item].update(delta);

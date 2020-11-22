@@ -1,8 +1,6 @@
 import * as PIXI from "pixi.js-legacy";
 
-export abstract class IObserver {
-    abstract commonChanged(commonState: CommonState): void
-}
+import { IObserver } from "./basetypes"
 
 export enum CommonState {
     None = 0,

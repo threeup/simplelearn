@@ -1,10 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Common = exports.CommonState = exports.IObserver = void 0;
+exports.Common = exports.CommonState = void 0;
 const PIXI = require("pixi.js-legacy");
-class IObserver {
-}
-exports.IObserver = IObserver;
 var CommonState;
 (function (CommonState) {
     CommonState[CommonState["None"] = 0] = "None";

@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js-legacy";
 import { World } from "./world"
+import { Node } from "./node"
 import { GameState } from "./gamestate"
 import { Common } from "./common"
 
@@ -23,20 +24,26 @@ export class Game {
             resolution: window.devicePixelRatio || 1
         });
 
-        this.world = new World({ state: this.state, common: this.common, parent: null, root:this.app.stage });
-        this.world.setup();
+        {
+            this.world = new World({ state: this.state, common: this.common });
+            const worldNode = new Node({ container: this.app.stage });
+            this.world.attachNode(worldNode)
+            this.world.setup();
+        }
 
         var game: Game = this;
-        document.addEventListener('keydown', function (e: KeyboardEvent) {
-            if (game.state) {
-                game.state.isKeyDown.set(e.key, true);
-            }
-        })
-        document.addEventListener('keyup', function (e: KeyboardEvent) {
-            if (game.state) {
-                game.state.isKeyDown.set(e.key, false);
-            }
-        });
+        {
+            document.addEventListener('keydown', function (e: KeyboardEvent) {
+                if (game.state) {
+                    game.state.isKeyDown.set(e.key, true);
+                }
+            })
+            document.addEventListener('keyup', function (e: KeyboardEvent) {
+                if (game.state) {
+                    game.state.isKeyDown.set(e.key, false);
+                }
+            });
+        }
 
         this.app.ticker.add(function (delta: number) {
             if (game.world) {
