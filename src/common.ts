@@ -6,7 +6,7 @@ export enum CommonState {
     None = 0,
     Exist,
     Loaded,
-    Dead
+    Shutdown
 }
 
 

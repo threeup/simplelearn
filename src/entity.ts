@@ -44,6 +44,7 @@ export class Entity implements IObserver, IUpdater {
     }
 
     public killAllChild() {
+        this.node.removeAllChild();
         this.updateList.forEach(c => c.die());
     }
 
@@ -86,7 +87,12 @@ export class Entity implements IObserver, IUpdater {
     }
 
     public commonChanged(num: CommonState): void {
+        if(num === CommonState.Loaded) {
+            this.onCommonLoaded();
+        }
     }
+
+    public onCommonLoaded() : void {}
 
     public update(delta: number): void {
         this.updateList = this.updateList.filter(u => u.isDead() === false);

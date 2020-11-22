@@ -41,6 +41,13 @@ export class Node {
         });
     }
 
+    public removeAllChild() {
+        this.childList.forEach(element => {
+            element.parent = null;
+        });
+        this.childList.splice(0, this.childList.length);
+    }
+
     private checkValid() {
         if (this.parent != null && this.entity == null) {
             this.parent.removeChild(this);

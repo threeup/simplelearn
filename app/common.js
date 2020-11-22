@@ -7,7 +7,7 @@ var CommonState;
     CommonState[CommonState["None"] = 0] = "None";
     CommonState[CommonState["Exist"] = 1] = "Exist";
     CommonState[CommonState["Loaded"] = 2] = "Loaded";
-    CommonState[CommonState["Dead"] = 3] = "Dead";
+    CommonState[CommonState["Shutdown"] = 3] = "Shutdown";
 })(CommonState = exports.CommonState || (exports.CommonState = {}));
 class Common {
     constructor() {

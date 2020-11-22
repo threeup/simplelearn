@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Entity = void 0;
 const node_1 = require("./node");
+const common_1 = require("./common");
 class Entity {
     constructor(args) {
         this.state = args.state;
@@ -20,6 +21,7 @@ class Entity {
         this.detachNode();
     }
     killAllChild() {
+        this.node.removeAllChild();
         this.updateList.forEach(c => c.die());
     }
     attachNode(node) {
@@ -61,7 +63,11 @@ class Entity {
         this.partList.forEach(p => { p.setTransform(this.transform); });
     }
     commonChanged(num) {
+        if (num === common_1.CommonState.Loaded) {
+            this.onCommonLoaded();
+        }
     }
+    onCommonLoaded() { }
     update(delta) {
         this.updateList = this.updateList.filter(u => u.isDead() === false);
         for (var item in this.updateList) {
