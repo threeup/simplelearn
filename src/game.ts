@@ -26,7 +26,8 @@ export class Game {
 
         {
             this.world = new World({ state: this.state, common: this.common });
-            const worldNode = new Node({ container: this.app.stage });
+            const worldNode = new Node();
+            worldNode.bind(null, this.app.stage);
             this.world.attachNode(worldNode)
             this.world.setup();
         }
@@ -46,12 +47,14 @@ export class Game {
         }
 
         this.app.ticker.add(function (delta: number) {
+            
+            var deltaTime = delta * game.app.ticker.deltaMS * 0.001;
             if (game.world) {
-                game.world.update(delta);
+                game.world.update(deltaTime);
             }
 
             if (game.state) {
-                game.state.update(delta);
+                game.state.update(deltaTime);
             }
         });
 

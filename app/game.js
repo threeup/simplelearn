@@ -20,7 +20,8 @@ class Game {
         });
         {
             this.world = new world_1.World({ state: this.state, common: this.common });
-            const worldNode = new node_1.Node({ container: this.app.stage });
+            const worldNode = new node_1.Node();
+            worldNode.bind(null, this.app.stage);
             this.world.attachNode(worldNode);
             this.world.setup();
         }
@@ -38,11 +39,12 @@ class Game {
             });
         }
         this.app.ticker.add(function (delta) {
+            var deltaTime = delta * game.app.ticker.deltaMS * 0.001;
             if (game.world) {
-                game.world.update(delta);
+                game.world.update(deltaTime);
             }
             if (game.state) {
-                game.state.update(delta);
+                game.state.update(deltaTime);
             }
         });
     }

@@ -1,25 +1,30 @@
 import * as PIXI from "pixi.js-legacy";
 import { Entity } from "./entity";
+import { Lib } from "./lib";
 
-interface NodeArguments {
-    parent?: Node;
-    container?: PIXI.Container;
-}
 
 export class Node {
 
-    protected parent: Node;
+    public parent: Node | null;
     public container: PIXI.Container;
     public childList: Array<Node>;
     public entity: Entity;
+    public identifier: number;
+    public parentIdentifier: number;
 
-    constructor(args: NodeArguments) {
+    constructor() {
+        this.parent = null;
+        this.identifier = Lib.randRange(0, 1000);
+        this.parentIdentifier = -1;
         this.childList = new Array();
-        if (args.parent) {
-            args.parent.addChild(this);
+    }
+
+    bind(parent: Node, container: PIXI.Container) {
+        if (parent) {
+            parent.addChild(this);
         } else {
             this.parent = null;
-            this.container = args.container;
+            this.container = container;
         }
     }
 
@@ -30,8 +35,9 @@ export class Node {
 
     public addChild(child:Node) {
         child.parent = this;
+        child.parentIdentifier = this.identifier;
+        child.container = this.container;
         this.childList.push(child);
-        this.container = this.parent.container;
     }
 
     public removeChild(child: Node) {

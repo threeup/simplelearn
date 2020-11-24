@@ -1,15 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Node = void 0;
+const lib_1 = require("./lib");
 class Node {
-    constructor(args) {
+    constructor() {
+        this.parent = null;
+        this.identifier = lib_1.Lib.randRange(0, 1000);
+        this.parentIdentifier = -1;
         this.childList = new Array();
-        if (args.parent) {
-            args.parent.addChild(this);
+    }
+    bind(parent, container) {
+        if (parent) {
+            parent.addChild(this);
         }
         else {
             this.parent = null;
-            this.container = args.container;
+            this.container = container;
         }
     }
     setEntity(entity) {
@@ -18,8 +24,9 @@ class Node {
     }
     addChild(child) {
         child.parent = this;
+        child.parentIdentifier = this.identifier;
+        child.container = this.container;
         this.childList.push(child);
-        this.container = this.parent.container;
     }
     removeChild(child) {
         child.parent = null;

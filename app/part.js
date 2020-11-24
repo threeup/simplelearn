@@ -6,7 +6,9 @@ class Part {
     }
     beforeDetach(e) {
     }
-    setTransform(tr) {
+    setTransform(tform) {
+    }
+    setTint(tint) {
     }
 }
 exports.Part = Part;

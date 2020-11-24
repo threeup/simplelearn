@@ -12,7 +12,10 @@ export class Part {
 
     }
 
-    setTransform(tr:Transform) {
+    setTransform(tform:Transform) {
+
+    }
+    setTint(tint:number) {
 
     }
 }
