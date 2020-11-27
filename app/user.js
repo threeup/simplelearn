@@ -12,8 +12,8 @@ class User extends entity_1.Entity {
         const charFileName = this.common.alphaMap.get(char);
         console.log(charFileName);
         var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex: 2 });
-        var startTform = { posX: 250, posY: 650, scaleX: 0.2, scaleY: 0.2 };
-        var endTform = { posX: 250, posY: 400, scaleX: 0.2, scaleY: 0.2 };
+        var startTform = { posX: 350, posY: 650, scaleX: 0.2, scaleY: 0.2 };
+        var endTform = { posX: 350, posY: 400, scaleX: 0.2, scaleY: 0.2 };
         var tion = new transition_1.Transition(1.5);
         tion.startTform = startTform;
         tion.endTform = endTform;
@@ -44,7 +44,7 @@ class User extends entity_1.Entity {
         var x = coord[0];
         var y = coord[1];
         var charSpeed = 100;
-        var charTint = 0x66ff66;
+        var charTint = 0x00ff33;
         if (correct === false) {
             x += lib_1.Lib.randRange(-100, 100);
             y = -100;
@@ -59,10 +59,16 @@ class User extends entity_1.Entity {
         var tion = new transition_1.Transition(100 / charSpeed);
         tion.startTform = startTform;
         tion.endTform = endTform;
+        tion.onDead = () => { this.checkComplete(); };
         letter.addTransition(tion);
         letter.attachPart(sprite);
         if (correct) {
             this.common.targetConsume();
+        }
+    }
+    checkComplete() {
+        if (this.countTransitions() == 0) {
+            this.common.checkComplete();
         }
     }
 }

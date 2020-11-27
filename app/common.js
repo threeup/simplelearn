@@ -19,18 +19,43 @@ class Common {
         this.targetRemaining = null;
         this.targetIndex = 0;
         this.alphaMap = new Map;
-        this.loader.add('alphaData', 'assets/alphadata.json');
-        this.loader.add('targetWordData', 'assets/objectdata.json');
+        this.targetMap = new Map;
+        this.loadFirst();
+    }
+    loadFirst() {
+        this.loader.add('alphaData', 'assets/splitfontdata.json');
+        this.loader.add('targetData', 'targetwords/targetwords.json');
         this.observerList.forEach(o => o.commonChanged(this.commonState));
         this.loader.load((loader, resources) => {
-            this.alphaData = resources.alphaData.data;
-            this.targetData = resources.targetWordData.data;
-            for (var elementName in this.alphaData.elements) {
-                let el = this.alphaData.elements[elementName];
+            var alphaData = resources['alphaData'].data;
+            var resTarget = resources['targetData'].data;
+            for (var elementName in alphaData.elements) {
+                let el = alphaData.elements[elementName];
                 this.alphaMap.set(el.text, el.img);
             }
+            var categoryNames = new Array;
+            for (var categoryNumber in resTarget.categories) {
+                var cc = resTarget.categories[categoryNumber];
+                categoryNames.push(cc.text);
+            }
+            this.loadSecond(categoryNames);
+        });
+    }
+    loadSecond(categoryNames) {
+        for (var idx in categoryNames) {
+            var categoryName = categoryNames[idx];
+            var categoryPath = 'targetwords/' + categoryName + 'data.json';
+            this.loader.add(categoryName, categoryPath);
+        }
+        this.loader.load((loader, resources) => {
+            console.log(resources);
+            for (var idx in categoryNames) {
+                var categoryName = categoryNames[idx];
+                var resCategory = resources[categoryName].data;
+                this.targetMap.set(categoryName, resCategory);
+            }
             this.setState(CommonState.Loaded);
-            this.setState(CommonState.Empty);
+            this.checkComplete();
         });
     }
     setState(state) {
@@ -46,10 +71,24 @@ class Common {
         observer.commonChanged(this.commonState);
     }
     targetConsume() {
-        this.targetIndex += 1;
-        this.targetRemaining = this.targetRemaining.slice(1);
-        if (this.targetRemaining.length === 0) {
-            this.targetRemaining = null;
+        var consume = true;
+        while (this.targetRemaining !== null && consume) {
+            this.targetIndex += 1;
+            this.targetRemaining = this.targetRemaining.slice(1);
+            var next = this.targetRemaining.charCodeAt(0);
+            if (next >= 47 && next <= 57) {
+                consume = false;
+            }
+            if (next >= 97 && next <= 122) {
+                consume = false;
+            }
+            if (this.targetRemaining.length === 0) {
+                this.targetRemaining = null;
+            }
+        }
+    }
+    checkComplete() {
+        if (this.targetRemaining === null) {
             this.setState(CommonState.Empty);
         }
     }

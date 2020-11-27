@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Entity = void 0;
 const node_1 = require("./node");
+const transition_1 = require("./transition");
 const common_1 = require("./common");
 class Entity {
     constructor(args) {
@@ -101,9 +102,25 @@ class Entity {
     onCommonInProgress() { }
     update(deltaTime) {
         this.updateList = this.updateList.filter(u => u.isDead() === false);
-        for (var item in this.updateList) {
-            this.updateList[item].update(deltaTime);
+        for (const itemName in this.updateList) {
+            this.updateList[itemName].update(deltaTime);
         }
+    }
+    countTransitions() {
+        var count = 0;
+        for (const itemName in this.updateList) {
+            const item = this.updateList[itemName];
+            if (!item.isDead()) {
+                if (item instanceof transition_1.Transition) {
+                    count += 1;
+                }
+                if (item instanceof Entity) {
+                    const ent = item;
+                    count += ent.countTransitions();
+                }
+            }
+        }
+        return count;
     }
 }
 exports.Entity = Entity;

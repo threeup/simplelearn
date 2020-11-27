@@ -6,7 +6,7 @@ import { User } from "./user";
 
 export class World extends Entity {
 
-    public elements: any;
+    public elements:Array<any>;
     public target:TargetWord;
     public user:User;
 
@@ -22,7 +22,8 @@ export class World extends Entity {
     }
 
     public onCommonLoaded() {
-        this.elements = this.common.targetData.elements;
+        var basicData = this.common.targetMap.get('basic');
+        this.elements = basicData.elements as Array<any>;
     }
 
     public onCommonEmpty() {
@@ -30,7 +31,7 @@ export class World extends Entity {
     }
 
     public refresh() {
-        var idx = Lib.randRange(0, 40);
+        var idx = Lib.randRange(0, this.elements.length);
         var data = this.elements[idx];
         
         this.target.loadWordData(data);

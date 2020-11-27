@@ -12,6 +12,7 @@ export class Transition {
     public dead: boolean;
     public setTform: (tform: Transform) => void;
     public setTint: (tint: number) => void;
+    public onDead: () => void;
 
     constructor(duration: number) {
         this.progress = 0;
@@ -25,6 +26,9 @@ export class Transition {
 
     public die(): void {
         this.dead = true;
+        if(this.onDead) {
+            this.onDead();
+        }
     }
 
     public isDead(): boolean {
@@ -35,11 +39,11 @@ export class Transition {
     public update(deltaTime: number): void {
         this.progress += deltaTime;
         var interval = this.progress / this.duration;
+        var x = null;
+        var y = null;
+        var sx = null;
+        var sy = null;
         if (this.setTform && this.startTform && this.endTform) {
-            var x = null;
-            var y = null;
-            var sx = null;
-            var sy = null;
             
             if (this.startTform.posX != this.endTform.posX) {
                 x = Transition.lerp(this.startTform.posX, this.endTform.posX, interval);
@@ -59,7 +63,17 @@ export class Transition {
             this.setTint(Transition.lerp(this.startTint, this.endTint, interval));
         }
         if (interval > 1.0) {
-            this.dead = true;
+            if (this.setTform && this.endTform) {
+                x = this.endTform.posX;
+                y = this.endTform.posY;
+                sx = this.endTform.scaleX;
+                sy = this.endTform.scaleY;
+                this.setTform({ posX: x, posY: y, scaleX: sx, scaleY: sy });
+            }
+            if (this.setTint && this.startTint != this.endTint) {
+                this.setTint(this.endTint);
+            }
+            this.die();
         }
     }
 } 

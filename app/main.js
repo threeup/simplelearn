@@ -4,6 +4,7 @@ const electron_1 = require("electron");
 const path = require("path");
 const url = require("url");
 let mainWindow;
+mainWindow = null;
 function createWindow() {
     var electronOptions = {
         width: 800,
@@ -28,12 +29,32 @@ function createWindow() {
         mainWindow = null;
     });
 }
-electron_1.app.on("ready", createWindow);
+function runScript() {
+    const { spawn } = require('child_process');
+    const subprocess = spawn('python', ['./py/makejson.py']);
+    subprocess.stdout.on('data', (data) => {
+        console.log(`data:${data}`);
+    });
+    subprocess.stderr.on('data', (data) => {
+        console.log(`error:${data}`);
+    });
+    subprocess.stderr.on('close', () => {
+        console.log("makejson finish");
+    });
+    return subprocess;
+}
+electron_1.app.on("ready", () => {
+    if (mainWindow === null) {
+        runScript();
+        createWindow();
+    }
+});
 electron_1.app.on("window-all-closed", () => {
     electron_1.app.quit();
 });
 electron_1.app.on("activate", () => {
     if (mainWindow === null) {
+        runScript();
         createWindow();
     }
 });

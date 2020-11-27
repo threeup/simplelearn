@@ -1,0 +1,248 @@
+{
+  "elements": [
+    {
+      "text": "abc_blocks",
+      "img": "./targetwords/basic/abc_blocks.svg"
+    },
+    {
+      "text": "airplane",
+      "img": "./targetwords/basic/airplane.svg"
+    },
+    {
+      "text": "apple",
+      "img": "./targetwords/basic/apple.svg"
+    },
+    {
+      "text": "bell",
+      "img": "./targetwords/basic/bell.svg"
+    },
+    {
+      "text": "big_rig_truck",
+      "img": "./targetwords/basic/big_rig_truck.svg"
+    },
+    {
+      "text": "bitcoin",
+      "img": "./targetwords/basic/bitcoin.svg"
+    },
+    {
+      "text": "camera",
+      "img": "./targetwords/basic/camera.svg"
+    },
+    {
+      "text": "camp_fire",
+      "img": "./targetwords/basic/camp_fire.svg"
+    },
+    {
+      "text": "car",
+      "img": "./targetwords/basic/car.svg"
+    },
+    {
+      "text": "cash_money",
+      "img": "./targetwords/basic/cash_money.svg"
+    },
+    {
+      "text": "computer",
+      "img": "./targetwords/basic/computer.svg"
+    },
+    {
+      "text": "cough",
+      "img": "./targetwords/basic/cough.svg"
+    },
+    {
+      "text": "danger",
+      "img": "./targetwords/basic/danger.svg"
+    },
+    {
+      "text": "doctor",
+      "img": "./targetwords/basic/doctor.svg"
+    },
+    {
+      "text": "field",
+      "img": "./targetwords/basic/field.svg"
+    },
+    {
+      "text": "flower",
+      "img": "./targetwords/basic/flower.svg"
+    },
+    {
+      "text": "folder",
+      "img": "./targetwords/basic/folder.svg"
+    },
+    {
+      "text": "forest",
+      "img": "./targetwords/basic/forest.svg"
+    },
+    {
+      "text": "game_controller",
+      "img": "./targetwords/basic/game_controller.svg"
+    },
+    {
+      "text": "gears",
+      "img": "./targetwords/basic/gears.svg"
+    },
+    {
+      "text": "ghost",
+      "img": "./targetwords/basic/ghost.svg"
+    },
+    {
+      "text": "good_job",
+      "img": "./targetwords/basic/good_job.svg"
+    },
+    {
+      "text": "grain",
+      "img": "./targetwords/basic/grain.svg"
+    },
+    {
+      "text": "grapes",
+      "img": "./targetwords/basic/grapes.svg"
+    },
+    {
+      "text": "grass",
+      "img": "./targetwords/basic/grass.svg"
+    },
+    {
+      "text": "handshake",
+      "img": "./targetwords/basic/handshake.svg"
+    },
+    {
+      "text": "heart",
+      "img": "./targetwords/basic/heart.svg"
+    },
+    {
+      "text": "increase",
+      "img": "./targetwords/basic/increase.svg"
+    },
+    {
+      "text": "lego",
+      "img": "./targetwords/basic/lego.svg"
+    },
+    {
+      "text": "light_bulb",
+      "img": "./targetwords/basic/light_bulb.svg"
+    },
+    {
+      "text": "location",
+      "img": "./targetwords/basic/location.svg"
+    },
+    {
+      "text": "mail",
+      "img": "./targetwords/basic/mail.svg"
+    },
+    {
+      "text": "mask",
+      "img": "./targetwords/basic/mask.svg"
+    },
+    {
+      "text": "microscope",
+      "img": "./targetwords/basic/microscope.svg"
+    },
+    {
+      "text": "money",
+      "img": "./targetwords/basic/money.svg"
+    },
+    {
+      "text": "palm",
+      "img": "./targetwords/basic/palm.svg"
+    },
+    {
+      "text": "pencil",
+      "img": "./targetwords/basic/pencil.svg"
+    },
+    {
+      "text": "people",
+      "img": "./targetwords/basic/people.svg"
+    },
+    {
+      "text": "pineapple",
+      "img": "./targetwords/basic/pineapple.svg"
+    },
+    {
+      "text": "plant",
+      "img": "./targetwords/basic/plant.svg"
+    },
+    {
+      "text": "raindrop",
+      "img": "./targetwords/basic/raindrop.svg"
+    },
+    {
+      "text": "rocket",
+      "img": "./targetwords/basic/rocket.svg"
+    },
+    {
+      "text": "rotate",
+      "img": "./targetwords/basic/rotate.svg"
+    },
+    {
+      "text": "rubber_duck",
+      "img": "./targetwords/basic/rubber_duck.svg"
+    },
+    {
+      "text": "sailboat",
+      "img": "./targetwords/basic/sailboat.svg"
+    },
+    {
+      "text": "scooter",
+      "img": "./targetwords/basic/scooter.svg"
+    },
+    {
+      "text": "service_bell",
+      "img": "./targetwords/basic/service_bell.svg"
+    },
+    {
+      "text": "shampoo",
+      "img": "./targetwords/basic/shampoo.svg"
+    },
+    {
+      "text": "ship",
+      "img": "./targetwords/basic/ship.svg"
+    },
+    {
+      "text": "shopping_cart",
+      "img": "./targetwords/basic/shopping_cart.svg"
+    },
+    {
+      "text": "shower",
+      "img": "./targetwords/basic/shower.svg"
+    },
+    {
+      "text": "smartphone",
+      "img": "./targetwords/basic/smartphone.svg"
+    },
+    {
+      "text": "soccer_ball",
+      "img": "./targetwords/basic/soccer_ball.svg"
+    },
+    {
+      "text": "spin",
+      "img": "./targetwords/basic/spin.svg"
+    },
+    {
+      "text": "store",
+      "img": "./targetwords/basic/store.svg"
+    },
+    {
+      "text": "teddy_bear",
+      "img": "./targetwords/basic/teddy_bear.svg"
+    },
+    {
+      "text": "tree",
+      "img": "./targetwords/basic/tree.svg"
+    },
+    {
+      "text": "trophy",
+      "img": "./targetwords/basic/trophy.svg"
+    },
+    {
+      "text": "virus",
+      "img": "./targetwords/basic/virus.svg"
+    },
+    {
+      "text": "wash_hands",
+      "img": "./targetwords/basic/wash_hands.svg"
+    },
+    {
+      "text": "watermelon",
+      "img": "./targetwords/basic/watermelon.svg"
+    }
+  ]
+}

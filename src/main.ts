@@ -4,6 +4,8 @@ import * as url from "url";
 
 let mainWindow: Electron.BrowserWindow;
 
+mainWindow = null;
+
 function createWindow() {
   var electronOptions = {
 		width: 800,
@@ -32,7 +34,29 @@ function createWindow() {
   });
 }
 
-app.on("ready", createWindow);
+function runScript() {
+  const { spawn } = require('child_process');
+  const subprocess = spawn('python', ['./py/makejson.py']);
+  
+  // print output of script
+  subprocess.stdout.on('data', (data:any) => {
+    console.log(`data:${data}`);
+  });
+  subprocess.stderr.on('data', (data:any) => {
+    console.log(`error:${data}`);
+  });
+  subprocess.stderr.on('close', () => {
+    console.log("makejson finish");
+  });
+  return subprocess;
+}
+
+app.on("ready", () => {
+  if (mainWindow === null) {
+    runScript();
+    createWindow();
+  }
+});
 
 app.on("window-all-closed", () => {
   app.quit();
@@ -40,6 +64,7 @@ app.on("window-all-closed", () => {
 
 app.on("activate", () => {
   if (mainWindow === null) {
+    runScript();
     createWindow();
   }
 });

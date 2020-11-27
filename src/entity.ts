@@ -30,7 +30,7 @@ export class Entity implements IObserver, IUpdater {
         this.partList = new Array();
         this.updateList = new Array();
         this.transform = { posX: 0, posY: 0, scaleX: 0.2, scaleY: 0.2 };
-        
+
         this.common = args.common;
         this.common.observe(this);
     }
@@ -79,10 +79,10 @@ export class Entity implements IObserver, IUpdater {
 
     public makeChild(ctor: EntityConstructor): Entity {
         var result = new ctor({ state: this.state, common: this.common });
-        var nextNode:Node = new Node();
+        var nextNode: Node = new Node();
         nextNode.bind(this.node, null);
         result.attachNode(nextNode);
-        
+
         this.updateList.push(result);
         return result;
     }
@@ -113,9 +113,9 @@ export class Entity implements IObserver, IUpdater {
     public commonChanged(num: CommonState): void {
         if (num === CommonState.Loaded) {
             this.onCommonLoaded();
-        } else if(num === CommonState.Empty) {
+        } else if (num === CommonState.Empty) {
             this.onCommonEmpty();
-        }else if(num === CommonState.InProgress) {
+        } else if (num === CommonState.InProgress) {
             this.onCommonInProgress();
         }
     }
@@ -126,8 +126,25 @@ export class Entity implements IObserver, IUpdater {
 
     public update(deltaTime: number): void {
         this.updateList = this.updateList.filter(u => u.isDead() === false);
-        for (var item in this.updateList) {
-            this.updateList[item].update(deltaTime);
+        for (const itemName in this.updateList) {
+            this.updateList[itemName].update(deltaTime);
         }
+    }
+
+    public countTransitions(): number {
+        var count = 0;
+        for (const itemName in this.updateList) {
+            const item = this.updateList[itemName];
+            if (!item.isDead()) {
+                if (item instanceof Transition) {
+                    count += 1;
+                }
+                if (item instanceof Entity) {
+                    const ent = item as Entity;
+                    count += ent.countTransitions();
+                }
+            }
+        }
+        return count;
     }
 }

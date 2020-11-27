@@ -11,6 +11,9 @@ class Transition {
     }
     die() {
         this.dead = true;
+        if (this.onDead) {
+            this.onDead();
+        }
     }
     isDead() {
         return this.dead === true;
@@ -18,11 +21,11 @@ class Transition {
     update(deltaTime) {
         this.progress += deltaTime;
         var interval = this.progress / this.duration;
+        var x = null;
+        var y = null;
+        var sx = null;
+        var sy = null;
         if (this.setTform && this.startTform && this.endTform) {
-            var x = null;
-            var y = null;
-            var sx = null;
-            var sy = null;
             if (this.startTform.posX != this.endTform.posX) {
                 x = Transition.lerp(this.startTform.posX, this.endTform.posX, interval);
             }
@@ -41,7 +44,17 @@ class Transition {
             this.setTint(Transition.lerp(this.startTint, this.endTint, interval));
         }
         if (interval > 1.0) {
-            this.dead = true;
+            if (this.setTform && this.endTform) {
+                x = this.endTform.posX;
+                y = this.endTform.posY;
+                sx = this.endTform.scaleX;
+                sy = this.endTform.scaleY;
+                this.setTform({ posX: x, posY: y, scaleX: sx, scaleY: sy });
+            }
+            if (this.setTint && this.startTint != this.endTint) {
+                this.setTint(this.endTint);
+            }
+            this.die();
         }
     }
 }
