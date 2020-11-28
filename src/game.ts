@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js-legacy";
 import { World } from "./world"
 import { Node } from "./node"
 import { GameState } from "./gamestate"
-import { Common } from "./common"
+import { Common, CommonState } from "./common"
 
 export class Game {
     public canvas: any;
@@ -55,6 +55,10 @@ export class Game {
 
             if (game.state) {
                 game.state.update(deltaTime);
+            }
+
+            if(game.common.commonState  == CommonState.Shutdown) {
+                game.app.destroy(true);
             }
         });
 

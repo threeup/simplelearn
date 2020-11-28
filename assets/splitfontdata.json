@@ -1,12 +1,12 @@
 {
   "elements": [
     {
-      "text": "a",
-      "img": "./assets/splitfont/a.svg"
+      "text": "x",
+      "img": "./assets/splitfont/x.svg"
     },
     {
-      "text": "b",
-      "img": "./assets/splitfont/b.svg"
+      "text": "s",
+      "img": "./assets/splitfont/s.svg"
     },
     {
       "text": "c",
@@ -17,132 +17,132 @@
       "img": "./assets/splitfont/d.svg"
     },
     {
-      "text": "e",
-      "img": "./assets/splitfont/e.svg"
-    },
-    {
-      "text": "eight",
-      "img": "./assets/splitfont/eight.svg"
-    },
-    {
-      "text": "f",
-      "img": "./assets/splitfont/f.svg"
-    },
-    {
-      "text": "five",
-      "img": "./assets/splitfont/five.svg"
-    },
-    {
-      "text": "four",
-      "img": "./assets/splitfont/four.svg"
-    },
-    {
-      "text": "g",
-      "img": "./assets/splitfont/g.svg"
-    },
-    {
-      "text": "h",
-      "img": "./assets/splitfont/h.svg"
-    },
-    {
       "text": "i",
       "img": "./assets/splitfont/i.svg"
-    },
-    {
-      "text": "j",
-      "img": "./assets/splitfont/j.svg"
-    },
-    {
-      "text": "k",
-      "img": "./assets/splitfont/k.svg"
-    },
-    {
-      "text": "l",
-      "img": "./assets/splitfont/l.svg"
-    },
-    {
-      "text": "m",
-      "img": "./assets/splitfont/m.svg"
-    },
-    {
-      "text": "n",
-      "img": "./assets/splitfont/n.svg"
-    },
-    {
-      "text": "nine",
-      "img": "./assets/splitfont/nine.svg"
-    },
-    {
-      "text": "o",
-      "img": "./assets/splitfont/o.svg"
-    },
-    {
-      "text": "one",
-      "img": "./assets/splitfont/one.svg"
-    },
-    {
-      "text": "p",
-      "img": "./assets/splitfont/p.svg"
-    },
-    {
-      "text": "q",
-      "img": "./assets/splitfont/q.svg"
-    },
-    {
-      "text": "r",
-      "img": "./assets/splitfont/r.svg"
-    },
-    {
-      "text": "s",
-      "img": "./assets/splitfont/s.svg"
     },
     {
       "text": "seven",
       "img": "./assets/splitfont/seven.svg"
     },
     {
-      "text": "six",
-      "img": "./assets/splitfont/six.svg"
-    },
-    {
-      "text": "t",
-      "img": "./assets/splitfont/t.svg"
-    },
-    {
       "text": "three",
       "img": "./assets/splitfont/three.svg"
     },
     {
-      "text": "two",
-      "img": "./assets/splitfont/two.svg"
+      "text": "o",
+      "img": "./assets/splitfont/o.svg"
+    },
+    {
+      "text": "eight",
+      "img": "./assets/splitfont/eight.svg"
+    },
+    {
+      "text": "four",
+      "img": "./assets/splitfont/four.svg"
+    },
+    {
+      "text": "k",
+      "img": "./assets/splitfont/k.svg"
     },
     {
       "text": "u",
       "img": "./assets/splitfont/u.svg"
     },
     {
-      "text": "v",
-      "img": "./assets/splitfont/v.svg"
+      "text": "m",
+      "img": "./assets/splitfont/m.svg"
     },
     {
-      "text": "w",
-      "img": "./assets/splitfont/w.svg"
+      "text": "a",
+      "img": "./assets/splitfont/a.svg"
     },
     {
-      "text": "x",
-      "img": "./assets/splitfont/x.svg"
+      "text": "p",
+      "img": "./assets/splitfont/p.svg"
+    },
+    {
+      "text": "j",
+      "img": "./assets/splitfont/j.svg"
+    },
+    {
+      "text": "five",
+      "img": "./assets/splitfont/five.svg"
+    },
+    {
+      "text": "six",
+      "img": "./assets/splitfont/six.svg"
+    },
+    {
+      "text": "two",
+      "img": "./assets/splitfont/two.svg"
     },
     {
       "text": "y",
       "img": "./assets/splitfont/y.svg"
     },
     {
+      "text": "n",
+      "img": "./assets/splitfont/n.svg"
+    },
+    {
+      "text": "v",
+      "img": "./assets/splitfont/v.svg"
+    },
+    {
+      "text": "nine",
+      "img": "./assets/splitfont/nine.svg"
+    },
+    {
+      "text": "h",
+      "img": "./assets/splitfont/h.svg"
+    },
+    {
+      "text": "t",
+      "img": "./assets/splitfont/t.svg"
+    },
+    {
+      "text": "one",
+      "img": "./assets/splitfont/one.svg"
+    },
+    {
+      "text": "l",
+      "img": "./assets/splitfont/l.svg"
+    },
+    {
+      "text": "w",
+      "img": "./assets/splitfont/w.svg"
+    },
+    {
       "text": "z",
       "img": "./assets/splitfont/z.svg"
     },
     {
+      "text": "f",
+      "img": "./assets/splitfont/f.svg"
+    },
+    {
+      "text": "g",
+      "img": "./assets/splitfont/g.svg"
+    },
+    {
+      "text": "b",
+      "img": "./assets/splitfont/b.svg"
+    },
+    {
       "text": "zero",
       "img": "./assets/splitfont/zero.svg"
+    },
+    {
+      "text": "r",
+      "img": "./assets/splitfont/r.svg"
+    },
+    {
+      "text": "q",
+      "img": "./assets/splitfont/q.svg"
+    },
+    {
+      "text": "e",
+      "img": "./assets/splitfont/e.svg"
     }
   ]
 }

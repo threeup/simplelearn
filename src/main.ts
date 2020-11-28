@@ -36,7 +36,7 @@ function createWindow() {
 
 function runScript() {
   const { spawn } = require('child_process');
-  const subprocess = spawn('python', ['./py/makejson.py']);
+  const subprocess = spawn('python3', ['./py/makejson.py']);
   
   // print output of script
   subprocess.stdout.on('data', (data:any) => {

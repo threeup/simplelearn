@@ -7,13 +7,11 @@ export class TargetWord extends Entity {
 
     public loadWordData(data: any) {
         var word: string = data.text;
-        console.log("load word data", word);
-
+        
         this.killAllChild();
         {
             var header = this.makeChild(Entity);
 
-            console.log("img ", data.img);
             var sprite = new SpritePart({ filename: data.img, tint: 0x99ffff, zIndex:0 });
             var startTform: Transform = { posX: 20, posY: -50, scaleX: 0.2, scaleY: 0.2 };
             var endTform: Transform = { posX: 20, posY: 50, scaleX: 0.2, scaleY: 0.2 };
@@ -25,7 +23,6 @@ export class TargetWord extends Entity {
         }
 
         for (let i = 0; i < word.length; i++) {
-
             const charFileName: string = this.common.alphaMap.get(word.charAt(i));
 
             var letter = this.makeChild(Entity);

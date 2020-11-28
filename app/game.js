@@ -46,6 +46,9 @@ class Game {
             if (game.state) {
                 game.state.update(deltaTime);
             }
+            if (game.common.commonState == common_1.CommonState.Shutdown) {
+                game.app.destroy(true);
+            }
         });
     }
 }

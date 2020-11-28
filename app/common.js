@@ -18,6 +18,7 @@ class Common {
         this.commonState = CommonState.Exist;
         this.targetRemaining = null;
         this.targetIndex = 0;
+        this.score = 0;
         this.alphaMap = new Map;
         this.targetMap = new Map;
         this.loadFirst();
@@ -48,7 +49,6 @@ class Common {
             this.loader.add(categoryName, categoryPath);
         }
         this.loader.load((loader, resources) => {
-            console.log(resources);
             for (var idx in categoryNames) {
                 var categoryName = categoryNames[idx];
                 var resCategory = resources[categoryName].data;
@@ -89,7 +89,14 @@ class Common {
     }
     checkComplete() {
         if (this.targetRemaining === null) {
-            this.setState(CommonState.Empty);
+            this.score += 1;
+            console.log(this.score);
+            if (this.score == 3) {
+                this.setState(CommonState.Shutdown);
+            }
+            else {
+                this.setState(CommonState.Empty);
+            }
         }
     }
     getTargetCoord(idx) {

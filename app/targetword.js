@@ -7,11 +7,9 @@ const transition_1 = require("./transition");
 class TargetWord extends entity_1.Entity {
     loadWordData(data) {
         var word = data.text;
-        console.log("load word data", word);
         this.killAllChild();
         {
             var header = this.makeChild(entity_1.Entity);
-            console.log("img ", data.img);
             var sprite = new spritepart_1.SpritePart({ filename: data.img, tint: 0x99ffff, zIndex: 0 });
             var startTform = { posX: 20, posY: -50, scaleX: 0.2, scaleY: 0.2 };
             var endTform = { posX: 20, posY: 50, scaleX: 0.2, scaleY: 0.2 };

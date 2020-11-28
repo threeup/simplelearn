@@ -11,7 +11,6 @@ export class User extends Entity {
         this.killAllChild();
         const char = "o";
         const charFileName: string = this.common.alphaMap.get(char);
-        console.log(charFileName);
         var sprite = new SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex: 2 });
         var startTform: Transform = { posX: 350, posY: 650, scaleX: 0.2, scaleY: 0.2 };
         var endTform: Transform = { posX: 350, posY: 400, scaleX: 0.2, scaleY: 0.2 };

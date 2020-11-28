@@ -10,7 +10,6 @@ class User extends entity_1.Entity {
         this.killAllChild();
         const char = "o";
         const charFileName = this.common.alphaMap.get(char);
-        console.log(charFileName);
         var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex: 2 });
         var startTform = { posX: 350, posY: 650, scaleX: 0.2, scaleY: 0.2 };
         var endTform = { posX: 350, posY: 400, scaleX: 0.2, scaleY: 0.2 };
