@@ -13,6 +13,8 @@ class Entity {
         this.common = args.common;
         this.common.observe(this);
     }
+    initialize() {
+    }
     isDead() {
         return this.node === null;
     }
@@ -56,6 +58,7 @@ class Entity {
         nextNode.bind(this.node, null);
         result.attachNode(nextNode);
         this.updateList.push(result);
+        result.initialize();
         return result;
     }
     addTransition(tion) {

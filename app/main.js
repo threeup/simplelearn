@@ -3,16 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 const path = require("path");
 const url = require("url");
+const process = require("process");
 let mainWindow;
 mainWindow = null;
 function createWindow() {
+    var args = process.argv;
+    console.log("args");
+    console.log(args);
     var electronOptions = {
         width: 800,
         height: 480,
         x: 0,
         y: 0,
         darkTheme: true,
-        fullscreen: false,
+        fullscreen: args.includes("full"),
         autoHideMenuBar: false,
         webPreferences: {
             nodeIntegration: true,
@@ -30,18 +34,22 @@ function createWindow() {
     });
 }
 function runScript() {
-    const { spawn } = require('child_process');
-    const subprocess = spawn('python3', ['./py/makejson.py']);
-    subprocess.stdout.on('data', (data) => {
-        console.log(`data:${data}`);
-    });
-    subprocess.stderr.on('data', (data) => {
-        console.log(`error:${data}`);
-    });
-    subprocess.stderr.on('close', () => {
-        console.log("makejson finish");
-    });
-    return subprocess;
+    var args = process.argv;
+    if (args.includes("json")) {
+        const { spawn } = require('child_process');
+        const subprocess = spawn('python3', ['./py/makejson.py']);
+        subprocess.stdout.on('data', (data) => {
+            console.log(`data:${data}`);
+        });
+        subprocess.stderr.on('data', (data) => {
+            console.log(`error:${data}`);
+        });
+        subprocess.stderr.on('close', () => {
+            console.log("makejson finish");
+        });
+        return subprocess;
+    }
+    return null;
 }
 electron_1.app.on("ready", () => {
     if (mainWindow === null) {

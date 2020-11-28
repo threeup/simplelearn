@@ -10,9 +10,9 @@ class TargetWord extends entity_1.Entity {
         this.killAllChild();
         {
             var header = this.makeChild(entity_1.Entity);
-            var sprite = new spritepart_1.SpritePart({ filename: data.img, tint: 0x99ffff, zIndex: 0 });
-            var startTform = { posX: 20, posY: -50, scaleX: 0.2, scaleY: 0.2 };
-            var endTform = { posX: 20, posY: 50, scaleX: 0.2, scaleY: 0.2 };
+            var sprite = new spritepart_1.SpritePart({ filename: data.img, tint: 0xffffff, zIndex: 0 });
+            var startTform = { posX: 20, posY: -50, scaleX: 0.4, scaleY: 0.4 };
+            var endTform = { posX: 20, posY: 10, scaleX: 0.4, scaleY: 0.4 };
             var tion = new transition_1.Transition(1.5);
             tion.startTform = startTform;
             tion.endTform = endTform;
@@ -22,7 +22,7 @@ class TargetWord extends entity_1.Entity {
         for (let i = 0; i < word.length; i++) {
             const charFileName = this.common.alphaMap.get(word.charAt(i));
             var letter = this.makeChild(entity_1.Entity);
-            var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex: -1 });
+            var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: 0xff6600, zIndex: -1 });
             var coord = this.common.getTargetCoord(i);
             var x = coord[0];
             var y = coord[1];

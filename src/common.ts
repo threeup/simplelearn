@@ -110,7 +110,6 @@ export class Common {
     public checkComplete(): void {
         if (this.targetRemaining === null) {
             this.score += 1;
-            console.log(this.score);
             if (this.score == 15) {
                 this.setState(CommonState.Shutdown);
             }
@@ -123,8 +122,8 @@ export class Common {
 
     public getTargetCoord(idx?: number): [number, number] {
         idx = idx ?? this.targetIndex;
-        var posX = 145 + idx * 45;
-        var posY = 80;
+        var posX = 175 + idx * 45;
+        var posY = 50;
         return [posX, posY];
     }
 

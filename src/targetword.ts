@@ -12,9 +12,9 @@ export class TargetWord extends Entity {
         {
             var header = this.makeChild(Entity);
 
-            var sprite = new SpritePart({ filename: data.img, tint: 0x99ffff, zIndex:0 });
-            var startTform: Transform = { posX: 20, posY: -50, scaleX: 0.2, scaleY: 0.2 };
-            var endTform: Transform = { posX: 20, posY: 50, scaleX: 0.2, scaleY: 0.2 };
+            var sprite = new SpritePart({ filename: data.img, tint: 0xffffff, zIndex:0 });
+            var startTform: Transform = { posX: 20, posY: -50, scaleX: 0.4, scaleY: 0.4 };
+            var endTform: Transform = { posX: 20, posY: 10, scaleX: 0.4, scaleY: 0.4 };
             var tion = new Transition(1.5);
             tion.startTform = startTform;
             tion.endTform = endTform;
@@ -26,7 +26,7 @@ export class TargetWord extends Entity {
             const charFileName: string = this.common.alphaMap.get(word.charAt(i));
 
             var letter = this.makeChild(Entity);
-            var sprite = new SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex:-1 });
+            var sprite = new SpritePart({ filename: charFileName, tint: 0xff6600, zIndex:-1 });
             var coord = this.common.getTargetCoord(i);
             var x = coord[0];
             var y = coord[1];

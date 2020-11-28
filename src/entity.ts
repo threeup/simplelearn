@@ -35,6 +35,10 @@ export class Entity implements IObserver, IUpdater {
         this.common.observe(this);
     }
 
+    public initialize():void {
+
+    }
+
     public isDead(): boolean {
         return this.node === null;
     }
@@ -84,6 +88,7 @@ export class Entity implements IObserver, IUpdater {
         result.attachNode(nextNode);
 
         this.updateList.push(result);
+        result.initialize();
         return result;
     }
 

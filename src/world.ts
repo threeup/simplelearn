@@ -3,12 +3,14 @@ import { Entity, EntityArgs } from "./entity"
 import { Lib } from "./lib"
 import { TargetWord } from "./targetword";
 import { User } from "./user";
+import { Background } from "./background";
 
 export class World extends Entity {
 
     public elements:Array<any>;
     public target:TargetWord;
     public user:User;
+    public background:Background;
 
     constructor(args: EntityArgs) {
         super(args);
@@ -16,9 +18,9 @@ export class World extends Entity {
     }
 
     public setup() {
-        const nextRoot = new PIXI.Container();
         this.target = this.makeChild(TargetWord) as TargetWord;
         this.user = this.makeChild(User) as User;
+        this.background = this.makeChild(Background) as Background;
     }
 
     public onCommonLoaded() {

@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.World = void 0;
-const PIXI = require("pixi.js-legacy");
 const entity_1 = require("./entity");
 const lib_1 = require("./lib");
 const targetword_1 = require("./targetword");
 const user_1 = require("./user");
+const background_1 = require("./background");
 class World extends entity_1.Entity {
     constructor(args) {
         super(args);
         console.log("world ready");
     }
     setup() {
-        const nextRoot = new PIXI.Container();
         this.target = this.makeChild(targetword_1.TargetWord);
         this.user = this.makeChild(user_1.User);
+        this.background = this.makeChild(background_1.Background);
     }
     onCommonLoaded() {
         var basicData = this.common.targetMap.get('basic');

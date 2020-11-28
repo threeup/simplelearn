@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "electron ./app/main.js"
+    "startw": "electron ./app/main.js window",
+    "startf": "electron ./app/main.js full",
+    "startwj": "electron ./app/main.js window json",
+    "startfj": "electron ./app/main.js full json"
   },
   "author": "Sheridan",
   "license": "MIT",

@@ -6,19 +6,21 @@ import { Lib } from "./lib"
 
 export class User extends Entity {
 
-
     public onCommonEmpty() {
         this.killAllChild();
-        const char = "o";
-        const charFileName: string = this.common.alphaMap.get(char);
-        var sprite = new SpritePart({ filename: charFileName, tint: 0x99ffff, zIndex: 2 });
-        var startTform: Transform = { posX: 350, posY: 650, scaleX: 0.2, scaleY: 0.2 };
-        var endTform: Transform = { posX: 350, posY: 400, scaleX: 0.2, scaleY: 0.2 };
+
+        var boysprite = new SpritePart({ filename: "assets/littleboy.svg", zIndex:2 });
+        
+        var startTform: Transform = { posX: 800, posY: 450, scaleX: 0.15, scaleY: 0.15 };
+        var endTform: Transform = { posX: 600, posY: 400, scaleX: 0.15, scaleY: 0.15 };
         var tion = new Transition(1.5);
         tion.startTform = startTform;
         tion.endTform = endTform;
         this.addTransition(tion);
-        this.attachPart(sprite);
+        this.attachPart(boysprite);
+
+        this.attachPart(boysprite);
+        boysprite.setTransform(startTform);
     }
 
     public update(deltaTime: number) {
@@ -39,7 +41,6 @@ export class User extends Entity {
                 }
             }
         }
-
         super.update(deltaTime);
     }
 
@@ -54,12 +55,12 @@ export class User extends Entity {
             x += Lib.randRange(-100, 100);
             y = -100;
             charSpeed = 200;
-            charTint = 0xff4444;
+            charTint = 0xf0f722;
         }
         var letter = this.makeChild(Entity);
         const charFileName: string = this.common.alphaMap.get(key);
-        var sprite = new SpritePart({ filename: charFileName, tint: charTint, zIndex: 2 });
-        var startTform: Transform = { posX: 350, posY: 480, scaleX: 0.2, scaleY: 0.2 };
+        var sprite = new SpritePart({ filename: charFileName, tint: charTint, zIndex: 3 });
+        var startTform: Transform = { posX: 550, posY: 480, scaleX: 0.2, scaleY: 0.2 };
         var endTform: Transform = { posX: x, posY: y, scaleX: 0.08, scaleY: 0.08 };
         var tion = new Transition(100 / charSpeed);
         tion.startTform = startTform;
