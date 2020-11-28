@@ -85,12 +85,12 @@
       "img": "./targetwords/advanced/bar.svg"
     },
     {
-      "text": "barrier",
-      "img": "./targetwords/advanced/barrier.svg"
-    },
-    {
       "text": "bar_graph",
       "img": "./targetwords/advanced/bar_graph.svg"
+    },
+    {
+      "text": "barrier",
+      "img": "./targetwords/advanced/barrier.svg"
     },
     {
       "text": "basket",
@@ -373,16 +373,16 @@
       "img": "./targetwords/advanced/feeding_bottle.svg"
     },
     {
-      "text": "fireplace",
-      "img": "./targetwords/advanced/fireplace.svg"
-    },
-    {
       "text": "fire_extinguisher",
       "img": "./targetwords/advanced/fire_extinguisher.svg"
     },
     {
       "text": "fire_truck",
       "img": "./targetwords/advanced/fire_truck.svg"
+    },
+    {
+      "text": "fireplace",
+      "img": "./targetwords/advanced/fireplace.svg"
     },
     {
       "text": "first_aid_kit",
@@ -413,10 +413,6 @@
       "img": "./targetwords/advanced/french_fries.svg"
     },
     {
-      "text": "gamepad",
-      "img": "./targetwords/advanced/gamepad.svg"
-    },
-    {
       "text": "game_controller",
       "img": "./targetwords/advanced/game_controller.svg"
     },
@@ -427,6 +423,10 @@
     {
       "text": "game_over",
       "img": "./targetwords/advanced/game_over.svg"
+    },
+    {
+      "text": "gamepad",
+      "img": "./targetwords/advanced/gamepad.svg"
     },
     {
       "text": "gaming_console",
@@ -493,16 +493,16 @@
       "img": "./targetwords/advanced/hurricane.svg"
     },
     {
-      "text": "iceberg",
-      "img": "./targetwords/advanced/iceberg.svg"
-    },
-    {
       "text": "ice_box",
       "img": "./targetwords/advanced/ice_box.svg"
     },
     {
       "text": "ice_cream",
       "img": "./targetwords/advanced/ice_cream.svg"
+    },
+    {
+      "text": "iceberg",
+      "img": "./targetwords/advanced/iceberg.svg"
     },
     {
       "text": "insert_coin",
@@ -613,16 +613,16 @@
       "img": "./targetwords/advanced/newspaper.svg"
     },
     {
+      "text": "no_smoking",
+      "img": "./targetwords/advanced/no_smoking.svg"
+    },
+    {
       "text": "noodles",
       "img": "./targetwords/advanced/noodles.svg"
     },
     {
       "text": "notes",
       "img": "./targetwords/advanced/notes.svg"
-    },
-    {
-      "text": "no_smoking",
-      "img": "./targetwords/advanced/no_smoking.svg"
     },
     {
       "text": "nuclear",
@@ -849,12 +849,12 @@
       "img": "./targetwords/advanced/snow.svg"
     },
     {
-      "text": "snowing",
-      "img": "./targetwords/advanced/snowing.svg"
-    },
-    {
       "text": "snow_avalanche",
       "img": "./targetwords/advanced/snow_avalanche.svg"
+    },
+    {
+      "text": "snowing",
+      "img": "./targetwords/advanced/snowing.svg"
     },
     {
       "text": "soap",

@@ -89,12 +89,12 @@
       "img": "./targetwords/basic/camera.svg"
     },
     {
-      "text": "camping",
-      "img": "./targetwords/basic/camping.svg"
-    },
-    {
       "text": "camp_fire",
       "img": "./targetwords/basic/camp_fire.svg"
+    },
+    {
+      "text": "camping",
+      "img": "./targetwords/basic/camping.svg"
     },
     {
       "text": "candle",
@@ -233,20 +233,20 @@
       "img": "./targetwords/basic/field.svg"
     },
     {
-      "text": "fireplace",
-      "img": "./targetwords/basic/fireplace.svg"
-    },
-    {
       "text": "fire_soccer_ball",
       "img": "./targetwords/basic/fire_soccer_ball.svg"
     },
     {
-      "text": "flower",
-      "img": "./targetwords/basic/flower.svg"
+      "text": "fireplace",
+      "img": "./targetwords/basic/fireplace.svg"
     },
     {
       "text": "flow_chart",
       "img": "./targetwords/basic/flow_chart.svg"
+    },
+    {
+      "text": "flower",
+      "img": "./targetwords/basic/flower.svg"
     },
     {
       "text": "folder",
@@ -301,12 +301,12 @@
       "img": "./targetwords/basic/hair_dryer.svg"
     },
     {
-      "text": "handshake",
-      "img": "./targetwords/basic/handshake.svg"
-    },
-    {
       "text": "hand_soap",
       "img": "./targetwords/basic/hand_soap.svg"
+    },
+    {
+      "text": "handshake",
+      "img": "./targetwords/basic/handshake.svg"
     },
     {
       "text": "headphone",
@@ -333,10 +333,6 @@
       "img": "./targetwords/basic/hospital.svg"
     },
     {
-      "text": "hotel",
-      "img": "./targetwords/basic/hotel.svg"
-    },
-    {
       "text": "hot_air_balloon",
       "img": "./targetwords/basic/hot_air_balloon.svg"
     },
@@ -345,8 +341,16 @@
       "img": "./targetwords/basic/hot_bread.svg"
     },
     {
+      "text": "hotel",
+      "img": "./targetwords/basic/hotel.svg"
+    },
+    {
       "text": "house",
       "img": "./targetwords/basic/house.svg"
+    },
+    {
+      "text": "in_the_cart",
+      "img": "./targetwords/basic/in_the_cart.svg"
     },
     {
       "text": "increase",
@@ -361,16 +365,12 @@
       "img": "./targetwords/basic/inject_needle.svg"
     },
     {
-      "text": "in_the_cart",
-      "img": "./targetwords/basic/in_the_cart.svg"
+      "text": "jet_ski",
+      "img": "./targetwords/basic/jet_ski.svg"
     },
     {
       "text": "jetplane",
       "img": "./targetwords/basic/jetplane.svg"
-    },
-    {
-      "text": "jet_ski",
-      "img": "./targetwords/basic/jet_ski.svg"
     },
     {
       "text": "key",
@@ -625,16 +625,16 @@
       "img": "./targetwords/basic/smartwatch.svg"
     },
     {
-      "text": "snowflake",
-      "img": "./targetwords/basic/snowflake.svg"
-    },
-    {
       "text": "snow_globe",
       "img": "./targetwords/basic/snow_globe.svg"
     },
     {
       "text": "snow_man",
       "img": "./targetwords/basic/snow_man.svg"
+    },
+    {
+      "text": "snowflake",
+      "img": "./targetwords/basic/snowflake.svg"
     },
     {
       "text": "soccer_ball",
@@ -677,6 +677,10 @@
       "img": "./targetwords/basic/sun.svg"
     },
     {
+      "text": "t_shirt",
+      "img": "./targetwords/basic/t_shirt.svg"
+    },
+    {
       "text": "talking",
       "img": "./targetwords/basic/talking.svg"
     },
@@ -717,10 +721,6 @@
       "img": "./targetwords/basic/turn_right.svg"
     },
     {
-      "text": "t_shirt",
-      "img": "./targetwords/basic/t_shirt.svg"
-    },
-    {
       "text": "umbrella",
       "img": "./targetwords/basic/umbrella.svg"
     },
@@ -749,10 +749,6 @@
       "img": "./targetwords/basic/water.svg"
     },
     {
-      "text": "watermelon",
-      "img": "./targetwords/basic/watermelon.svg"
-    },
-    {
       "text": "water_gun",
       "img": "./targetwords/basic/water_gun.svg"
     },
@@ -763,6 +759,10 @@
     {
       "text": "water_slide",
       "img": "./targetwords/basic/water_slide.svg"
+    },
+    {
+      "text": "watermelon",
+      "img": "./targetwords/basic/watermelon.svg"
     },
     {
       "text": "website",

@@ -8,7 +8,8 @@ def main():
     directory = "./targetwords"
     data = {}
     data['categories'] = []
-    for count, filename in enumerate(os.listdir(directory)): 
+    list_dir = sorted(os.listdir(directory))
+    for count, filename in enumerate(list_dir): 
         chunks = filename.split('.')
         if len(chunks) == 1:
             category = chunks[0]
@@ -24,7 +25,8 @@ def writeCategory(category):
     directory = "./targetwords/"+category+"/"
     data = {}
     data['elements'] = []
-    for count, filename in enumerate(os.listdir(directory)): 
+    list_dir = sorted(os.listdir(directory))
+    for count, filename in enumerate(list_dir): 
         chunks = filename.split('.')
         target = chunks[0].replace(' ','_').lower()
         data['elements'].append({

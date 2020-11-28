@@ -111,7 +111,7 @@ export class Common {
         if (this.targetRemaining === null) {
             this.score += 1;
             console.log(this.score);
-            if (this.score == 3) {
+            if (this.score == 15) {
                 this.setState(CommonState.Shutdown);
             }
             else {
