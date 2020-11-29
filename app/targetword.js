@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TargetWord = void 0;
 const entity_1 = require("./entity");
 const spritepart_1 = require("./spritepart");
+const textpart_1 = require("./textpart");
 const transition_1 = require("./transition");
 class TargetWord extends entity_1.Entity {
     loadWordData(data) {
@@ -20,9 +21,8 @@ class TargetWord extends entity_1.Entity {
             header.attachPart(sprite);
         }
         for (let i = 0; i < word.length; i++) {
-            const charFileName = this.common.alphaMap.get(word.charAt(i));
             var letter = this.makeChild(entity_1.Entity);
-            var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: 0xff6600, zIndex: -1 });
+            var tex = new textpart_1.TextPart({ words: word.charAt(i).toUpperCase(), tint: 0xff6600 });
             var coord = this.common.getTargetCoord(i);
             var x = coord[0];
             var y = coord[1];
@@ -33,7 +33,7 @@ class TargetWord extends entity_1.Entity {
             tion.startTform = startTform;
             tion.endTform = endTform;
             letter.addTransition(tion);
-            letter.attachPart(sprite);
+            letter.attachPart(tex);
         }
         ;
         this.common.setTarget(data.text);

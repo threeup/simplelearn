@@ -1,5 +1,6 @@
 import { Entity } from "./entity"
 import { SpritePart } from "./spritepart";
+import { TextPart } from "./textpart";
 import { Transform } from "./basetypes"
 import { Transition } from "./transition";
 import { Lib } from "./lib"
@@ -58,8 +59,8 @@ export class User extends Entity {
             charTint = 0xf0f722;
         }
         var letter = this.makeChild(Entity);
-        const charFileName: string = this.common.alphaMap.get(key);
-        var sprite = new SpritePart({ filename: charFileName, tint: charTint, zIndex: 3 });
+        //const charFileName: string = this.common.alphaMap.get(key);
+        var sprite = new TextPart({ words: key.toUpperCase(), tint: charTint });
         var startTform: Transform = { posX: 550, posY: 480, scaleX: 0.2, scaleY: 0.2 };
         var endTform: Transform = { posX: x, posY: y, scaleX: 0.08, scaleY: 0.08 };
         var tion = new Transition(100 / charSpeed);

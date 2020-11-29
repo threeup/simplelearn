@@ -1,4 +1,6 @@
 import * as PIXI from "pixi.js-legacy";
+import * as path from "path";
+import * as fs from "fs";
 
 import { IObserver } from "./basetypes"
 
@@ -35,12 +37,17 @@ export class Common {
         this.loadFirst();
     }
     private loadFirst(): void {
+
+        this.loader.add('overpassthree', 'assets/overpass32.fnt');
+        this.loader.add('overpasssix', 'assets/overpass64.fnt');
+        this.loader.add('whiterabt', 'assets/whiterabt.fnt');
         this.loader.add('alphaData', 'assets/splitfontdata.json');
         this.loader.add('targetData', 'targetwords/targetwords.json');
         this.observerList.forEach(o => o.commonChanged(this.commonState))
         this.loader.load((loader: PIXI.Loader, resources: any) => {
             var alphaData = resources['alphaData'].data;
             var resTarget = resources['targetData'].data;
+           
             for (var elementName in alphaData.elements) {
                 let el = alphaData.elements[elementName];
                 this.alphaMap.set(el.text, el.img);
@@ -122,7 +129,7 @@ export class Common {
 
     public getTargetCoord(idx?: number): [number, number] {
         idx = idx ?? this.targetIndex;
-        var posX = 175 + idx * 45;
+        var posX = 175 + idx * 42;
         var posY = 50;
         return [posX, posY];
     }

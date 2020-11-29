@@ -24,6 +24,9 @@ class Common {
         this.loadFirst();
     }
     loadFirst() {
+        this.loader.add('overpassthree', 'assets/overpass32.fnt');
+        this.loader.add('overpasssix', 'assets/overpass64.fnt');
+        this.loader.add('whiterabt', 'assets/whiterabt.fnt');
         this.loader.add('alphaData', 'assets/splitfontdata.json');
         this.loader.add('targetData', 'targetwords/targetwords.json');
         this.observerList.forEach(o => o.commonChanged(this.commonState));
@@ -100,7 +103,7 @@ class Common {
     }
     getTargetCoord(idx) {
         idx = idx !== null && idx !== void 0 ? idx : this.targetIndex;
-        var posX = 175 + idx * 45;
+        var posX = 175 + idx * 42;
         var posY = 50;
         return [posX, posY];
     }

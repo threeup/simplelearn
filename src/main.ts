@@ -3,7 +3,6 @@ import * as path from "path";
 import * as url from "url";
 import * as process from "process";
 
-
 let mainWindow: Electron.BrowserWindow;
 
 mainWindow = null;
@@ -11,8 +10,6 @@ mainWindow = null;
 function createWindow() {
 
   var args = process.argv;
-  console.log("args");
-  console.log(args);
   var electronOptions = {
 		width: 800,
 		height: 480,

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const entity_1 = require("./entity");
 const spritepart_1 = require("./spritepart");
+const textpart_1 = require("./textpart");
 const transition_1 = require("./transition");
 const lib_1 = require("./lib");
 class User extends entity_1.Entity {
@@ -51,8 +52,7 @@ class User extends entity_1.Entity {
             charTint = 0xf0f722;
         }
         var letter = this.makeChild(entity_1.Entity);
-        const charFileName = this.common.alphaMap.get(key);
-        var sprite = new spritepart_1.SpritePart({ filename: charFileName, tint: charTint, zIndex: 3 });
+        var sprite = new textpart_1.TextPart({ words: key.toUpperCase(), tint: charTint });
         var startTform = { posX: 550, posY: 480, scaleX: 0.2, scaleY: 0.2 };
         var endTform = { posX: x, posY: y, scaleX: 0.08, scaleY: 0.08 };
         var tion = new transition_1.Transition(100 / charSpeed);

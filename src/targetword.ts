@@ -1,5 +1,6 @@
 import { Entity } from "./entity"
 import { SpritePart } from "./spritepart";
+import { TextPart } from "./textpart";
 import { Transform } from "./basetypes"
 import { Transition } from "./transition";
 
@@ -23,10 +24,10 @@ export class TargetWord extends Entity {
         }
 
         for (let i = 0; i < word.length; i++) {
-            const charFileName: string = this.common.alphaMap.get(word.charAt(i));
+            //const charFileName: string = this.common.alphaMap.get(word.charAt(i));
 
             var letter = this.makeChild(Entity);
-            var sprite = new SpritePart({ filename: charFileName, tint: 0xff6600, zIndex:-1 });
+            var tex = new TextPart({ words: word.charAt(i).toUpperCase(), tint: 0xff6600});
             var coord = this.common.getTargetCoord(i);
             var x = coord[0];
             var y = coord[1];
@@ -37,7 +38,7 @@ export class TargetWord extends Entity {
             tion.startTform = startTform;
             tion.endTform = endTform;
             letter.addTransition(tion);
-            letter.attachPart(sprite);
+            letter.attachPart(tex);
         };
 
         this.common.setTarget(data.text);

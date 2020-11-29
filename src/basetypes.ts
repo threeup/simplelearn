@@ -4,8 +4,8 @@ import { CommonState } from "./common"
 export interface Transform {
     posX: number,
     posY: number,
-    scaleX: number,
-    scaleY: number,
+    scaleX?: number,
+    scaleY?: number,
 }
 
 export interface IUpdater {

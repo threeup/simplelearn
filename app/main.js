@@ -8,8 +8,6 @@ let mainWindow;
 mainWindow = null;
 function createWindow() {
     var args = process.argv;
-    console.log("args");
-    console.log(args);
     var electronOptions = {
         width: 800,
         height: 480,
