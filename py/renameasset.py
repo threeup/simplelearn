@@ -3,7 +3,7 @@ import os
   
 # Function to rename multiple files 
 def main(): 
-    directory = "./assets/gaming"
+    directory = "./targetwords/games"
     for count, filename in enumerate(os.listdir(directory)): 
         chunks = filename.split('-')
         if len(chunks) > 1:
